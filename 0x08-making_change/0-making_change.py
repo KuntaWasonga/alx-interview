@@ -15,7 +15,7 @@ def makeChange(coins, total):
     coin_id = 0
     sorted_coins = sorted(coins, reverse=True)
     l = len(coins)
-    
+
     while change > 0:
         if coin_id >= l:
             return -1
