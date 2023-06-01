@@ -1,5 +1,11 @@
 #!/usr/bin/python3
+"""This is a coding challenge function
+"""
+
+
 def isWinner(x, nums):
+    """This function determines the winner based on x and nums
+    """
     if x != len(nums):
         return None
     
