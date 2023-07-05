@@ -18,22 +18,19 @@ request(url, (error, response, body) => {
     return;
   }
 
-  const film = JSON.parse(body);
-  const characters = film["characters"];
+  const characters = JSON.parse(body).characters;
 
-  for (let i = 0; i < characters.length; i++) {
-    request(characters[i], (error, response, body) => {
-      if (error) {
-        console.log(error);
-        return;
-      }
-      if (response.statusCode !== 200) {
-        console.log('Error:', response.statusCode);
-        return;
-      }
+  const charactersName = characters.map(
+    url => new Promise((resolve, reject) => {
+      request(url, (promiseErr, __, charactersReqBody) => {
+        if (promiseErr) {
+          reject(promiseErr);
+        }
+        resolve(JSON.parse(charactersReqBody).name);
+      });
+    }));
 
-      const character = JSON.parse(body);
-      console.log(character["name"]);
-    });
-  }
+  Promise.all(charactersName)
+    .then(names => console.log(names.join('\n')))
+    .catch(allErr => console.log(allErr));
 });
