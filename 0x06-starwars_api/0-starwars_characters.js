@@ -3,10 +3,10 @@
 const request = require('request');
 
 // Extract the command-line argument
-let number = process.argv[2];
+const number = process.argv[2];
 
 // Check for a film
-let url = `https://swapi-api.alx-tools.com/api/films/${number}`;
+const url = `https://swapi-api.alx-tools.com/api/films/${number}`;
 
 request(url, (error, response, body) => {
   if (error) {
