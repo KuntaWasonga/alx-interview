@@ -19,7 +19,6 @@ request(url, (error, response, body) => {
   }
 
   const film = JSON.parse(body);
-  console.log (film)
   const characters = film["characters"];
 
   for (let i = 0; i < characters.length; i++) {
