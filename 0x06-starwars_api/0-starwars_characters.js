@@ -6,7 +6,7 @@ const request = require('request');
 let number = process.argv[2];
 
 // Check for a film
-let url = `https://swapi-api.alx-tools.com/api/people/${number}`;
+let url = `https://swapi-api.alx-tools.com/api/films/${number}`;
 
 request(url, (error, response, body) => {
   if (error) {
